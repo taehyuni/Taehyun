@@ -20,7 +20,6 @@
     ● 실행 버튼을 눌러 앱 실행
 
 ### 🔗 관련 링크
-##### 1. 깃허브 사용법
 ● 마크 다운 문서 작성법 : <https://gist.github.com/ihoneymon/652be052a0727ad59601>
 ● GitHub README.md 작성하기 : <https://backendcode.tistory.com/165>
 ● git으로 GitHub 사용법 : <https://sseozytank.tistory.com/41>
