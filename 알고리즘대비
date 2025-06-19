@@ -1,0 +1,84 @@
+이진 탐색 배열 코드
+def binSearch(ary, fData):
+    global count
+    start = 0
+    end = len(ary) - 1
+
+    while(start <= end):                 # start가 end보다 커지면 반복 종료
+        count += 1                       # 반복 횟수 카운트(몇 번 실행했는지)
+        mid = (start + end) // 2         # 현재 검색 구간의 중앙 인덱스
+
+        if fData == ary[mid]:            # 중앙값이 찾는 값이면 정답
+            return mid
+        elif fData > ary[mid]:           # 찾는 값이 중앙값보다 크면 오른쪽 구간 탐색
+            start = mid + 1
+        elif fData < ary[mid]:           # 찾는 값이 중앙값보다 작으면 왼쪽 구간 탐색
+            end =  mid - 1
+
+##전역변수 선언 부분
+dataAry , sortedAry = [] , []
+findData = 0
+count = 0 
+num = []
+keyNum = 0
+findDataIndex = 0
+
+main 코드 부분
+if name == "main":
+    print("정수 10개를 공백으로 구분해 입력:")
+    for i in range(10):
+        print("%d번째 정수입력" % (i+1))
+        val = int(input(""))
+        num.append(val)
+
+    print("입력된 정수들=", num)
+    keyNum = int(input("검색하고자 하는 키값 입력="))
+    findDataIndex = binSearch(num, keyNum)
+    print("검색된 키값의 index=%d" % findDataIndex)
+    print("검색된 키값=%d" % num[findDataIndex])
+============================================
+이진 탐색 트리 코드
+TreeNode 클래스 선언
+class TreeNode:
+    def init(self):
+        self.left = None   # 왼쪽 자식 노드
+        self.data = None   # 노드에 저장될 데이터(문자열)
+        self.right = None  # 오른쪽 자식 노드
+전역 변수 선언
+memory = []      # 생성된 모든 노드 객체를 담아둘 리스트 (메모리 관리용)
+root = None      # 트리의 루트 노드
+nameAry = ['블랙핑크','레드벨벳','마마무', '에이핑크','걸스데이','트와이스']
+중위 순회 함수
+def inorder_traversa(node):
+    if node is not None:
+        inorder_traversa(node.left)   # 왼쪽 서브트리 순회
+        print(node.data, end="")      # 현재 노드 데이터 출력
+        inorder_traversa(node.right)  # 오른쪽 서브트리 순회
+메인 코드 – 트리 구성
+node = TreeNode()
+node.data = nameAry[0]    # '블랙핑크'
+root = node               # 루트 노드 설정
+memory.append(node)
+for name in nameAry[1:]:
+    node = TreeNode()
+    node.data = name
+    current = root
+    while True:
+        if name < current.data:
+            if current.left is None:
+                current.left = node
+                break
+            current = current.left
+        else:
+            if current.right is None:
+                current.right = node
+                break
+            current = current.right
+    memory.append(node)
+트리 구성 결과 확인
+print("이진 탐색 트리 구성 완료")
+print("memory 리스트에 저장된 노드 데이터들")
+for node in memory:
+    print(node.data)
+print()
+print("이진탐색트리의 모든 노드값 출력(중위순회):")
